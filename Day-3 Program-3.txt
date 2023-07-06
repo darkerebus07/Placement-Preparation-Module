@@ -1,5 +1,5 @@
 import java.util.*;
-public class tUf {
+public class Main {
     public static int majority_element(int []v) {
         int n = v.length;
         for (int i = 0; i < n; i++) {
