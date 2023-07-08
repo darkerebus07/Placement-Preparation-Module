@@ -1,0 +1,20 @@
+import java.util.*;
+public class Main 
+{
+    public static String Sum(int n, int []a, int t) {
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (a[i] + a[j] == t) return "YES";
+            }
+        }
+        return "NO";
+    }
+    public static void main(String args[]) {
+        int n = 5;
+        int[] a = {2, 6, 5, 8, 11};
+        int t = 14;
+        String ans = Sum(n, a, t);
+        System.out.println("This is the answer for variant 1: " + ans);
+    }
+
+}
