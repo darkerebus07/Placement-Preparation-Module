@@ -1,0 +1,58 @@
+public class linkedlist
+{
+    class Node{
+        int data;
+        Node next;
+        Node(int data)
+    {
+       this.data=data;
+       this.next= null;
+    }
+    }
+    Node head=null;
+    Node tail=null;
+    public void addNodes(int new_data)
+    {
+        Node new_Node=new Node(new_data);
+        if(head==null)
+        {
+            head=new_Node;
+            tail=new_Node;
+        }
+        else
+        {
+            tail.next=new_Node;
+            tail=tail.next;
+        }
+        public void printme();
+        {
+            Node temp=head;
+            while(temp!=null)
+            {
+                System.out.println(temp.data+"->");
+                temp=temp.next;
+            }
+            System.out.println("NULL");
+        }
+        public static void main(String args[])
+        {
+            ll_middle linkedlist= new ll_middle();
+            linkedlist.addNodes(1);
+            linkedlist.addNodes(2);
+             linkedlist.addNodes(3);
+            linkedlist.addNodes(4);
+            linkedlist.printme();
+        }
+        private void findmiddleNode()
+        {
+            Node slowpointer=head;
+            Node fastPointer=head;
+            while(fastPointer!=null&&fastPointer.nest1=null)
+            {
+                fastPointer=fastPointer.next;
+                slowpointer=slowPointer.next;
+            }
+            System.out.println(slowPointer.next.data);
+        }
+
+        }
