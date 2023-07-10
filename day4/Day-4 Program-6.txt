@@ -1,0 +1,29 @@
+import java.util.*;
+public class Main {
+    static int solution(String str) {
+        if(str.length()==0)
+             return 0;
+        int max = Integer.MIN_VALUE;
+        Set < Character > set = new HashSet < > ();
+        int l = 0;
+        for (int r = 0; r < str.length(); r++)
+        {
+            if (set.contains(str.charAt(r)))
+            {
+                while (l < r && set.contains(str.charAt(r))) {
+                    set.remove(str.charAt(l));
+                    l++;
+                }
+            }
+            set.add(str.charAt(r));
+            max = Math.max(max, r - l + 1);
+        }
+        return max;
+    }
+    public static void main(String args[]) {
+        String str = "AdarshMaurya";
+        System.out.println("The length of the longest substring without repeating 
+        characters is " + solution(str));
+
+    }
+}
