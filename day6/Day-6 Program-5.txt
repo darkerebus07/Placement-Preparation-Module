@@ -1,0 +1,73 @@
+import java.util.*;
+class Node {
+        int num;
+        Node next;
+        Node(int val) {
+            num = val;
+            next = null;
+        }
+}
+class Main{
+static Node insert_Node(Node head,int val) {
+    Node newNode = new Node(val);
+    if(head == null) {
+        head = newNode;
+        return head;
+    }
+    Node temp = head;
+    while(temp.next != null) temp = temp.next;
+    
+    temp.next = newNode;
+    return head;
+}
+
+static void create_Cycle(Node head,int pos) {
+    Node ptr = head;
+    Node temp = head;
+    int cnt = 0;
+    while(temp.next != null) {
+        if(cnt != pos) {
+            ++cnt;
+            ptr = ptr.next;
+        } 
+        temp = temp.next;
+    }
+    temp.next = ptr;
+}
+static Node detect_Cycle(Node head) {
+    HashSet<Node> st=new HashSet<>();
+    while(head != null) {
+        if(st.contains(head)) return head;
+        st.add(head);
+        head = head.next;
+    }
+    return null;
+}
+
+public static void main(String args[]) {
+    Node head = null;
+    
+    head=insert_Node(head,1);
+    head=insert_Node(head,2);
+    head=insert_Node(head,3);
+    head=insert_Node(head,4);
+    head=insert_Node(head,3);
+    head=insert_Node(head,6);
+    head=insert_Node(head,10);
+    
+    create_Cycle(head,2);
+    
+    Node nodeRecieve = detect_Cycle(head);
+    if(nodeRecieve == null) System.out.println("No cycle");
+    else {
+        Node temp = head;
+        int pos = 0;
+        while(temp!=nodeRecieve) {
+            ++pos;
+            temp = temp.next;
+        }
+        System.out.println("Tail connects at pos "+pos);
+    }
+    
+}
+}
